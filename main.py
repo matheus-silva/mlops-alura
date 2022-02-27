@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_basicauth import BasicAuth
 from textblob import TextBlob
 from sklearn.linear_model import LinearRegression
 import pickle
@@ -8,12 +9,17 @@ with open("modelo.sav", "rb") as f:
     modelo = pickle.load(f)
 
 app = Flask(__name__)
+app.config["BASIC_AUTH_USERNAME"] = ""
+app.config["BASIC_AUTH_PASSWORD"] = ""
+
+basic_auth = BasicAuth(app)
 
 @app.route("/")
 def home():
     return "Minha primeira API."
 
 @app.route("/sentimento/<frase>")
+@basic_auth.required
 def sentimento(frase):
     tb = TextBlob(frase)
     tb_en = tb.translate(to="en")
