@@ -1,3 +1,6 @@
+# APP Engine variables
+app_env_vars.yaml
+
 # Virtual Environment
 venv 
 
