@@ -1,0 +1,3 @@
+env_variables:
+  BASIC_AUTH_USERNAME: your_username
+  BASIC_AUTH_PASSWORD: your_password
