@@ -6,7 +6,7 @@ import pickle
 import os
 
 colunas = ["tamanho", "ano", "garagem"]
-with open("../../models/modelo.sav", "rb") as f:
+with open("models/modelo.sav", "rb") as f:
     modelo = pickle.load(f)
 
 app = Flask(__name__)
