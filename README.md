@@ -1,7 +1,67 @@
 mlops-alura-deploy
 ==============================
 
-Project created during Alura's MLOps courses
+Project created during Alura's MLOps course
+
+How to run this project in development
+------------
+
+Use the followings steps to run this project in a development environment:
+
+1. Activate the virtual environment:
+    
+    ```sh
+    source ./venv/bin/activate
+    ```
+
+2. Export the following environment variables:
+
+    ```sh
+    export PORT=5000
+    export BASIC_AUTH_USERNAME=your_username
+    export BASIC_AUTH_PASSWORD=your_password
+    ```
+
+3. Run API:
+
+    ```sh
+    gunicorn -b :$PORT src.app.main:app
+    ```
+
+How to run this project in APP Engine 
+------------
+
+Use the followings steps to run this project in APP Engine:
+
+1. Create a new environment variable file from `app_env_vars.yaml.example`:
+    ```sh
+    cp app_env_vars.yaml.example app_env_vars.yaml
+    ```
+
+2. Edit the variables defined in `app_env_vars.yaml`:
+
+3. Deploy your application to APP Engine using [gcloud](https://cloud.google.com/sdk/docs/install?hl=pt-br#windows):
+
+    ```sh
+    gcloud app deploy
+    ```
+
+How to run this project in Docker
+------------
+
+Use the followings steps to run this project in Docker:
+
+1. Build Docker image:
+
+    ```sh
+    docker build -t mlops-alura --build-arg BASIC_AUTH_USERNAME_ARG=your_username --build-arg BASIC_AUTH_PASSWORD_ARG=your_password .
+    ```
+
+2. Run Docker container:
+
+    ```sh
+    docker run -p 5000:5000 mlops-alura
+    ```
 
 Project Organization
 ------------
