@@ -1,12 +1,20 @@
 mlops-alura-deploy
 ==============================
 
-Project created during Alura's MLOps course
+Project created during Alura's MLOps course, which covered the following subjects: 
+
+* Serve Machine Learning models through APIs using _flask_
+* Use _cookiecutter_ to organize this repository
+* Use three different strategies to deploy this application:
+   1. Deploy using GCP Compute Engine (Virtual Machines)
+   2. Deploy using GCP App Engine (Serverless)
+   3. Deploy using Docker (Container)
+* Apply _continuous delivery_ (CD) using GitHub Actions
 
 How to run this project in development
 ------------
 
-Use the followings steps to run this project in a development environment:
+Use the following steps to run this project in a development environment:
 
 1. Activate the virtual environment:
     
@@ -62,6 +70,20 @@ Use the followings steps to run this project in Docker:
     ```sh
     docker run -p 5000:5000 mlops-alura
     ```
+
+How to run this project in Docker + Cloud Run through GitHub Actions
+------------
+
+1. Add the following secrets in the GitHub Repository: 
+
+   | Secret              | Description                        |
+   |---------------------|------------------------------------|
+   | BASIC_AUTH_USERNAME | Username used in the API           |
+   | BASIC_AUTH_PASSWORD | Password used in the API           |
+   | RUN_PROJECT         | GCP Project ID                     |
+   | RUN_SA_KEY          | GCP Service Account key            |
+
+2. Manually trigger this pipeline or push a new commit in the expected branch.
 
 Project Organization
 ------------

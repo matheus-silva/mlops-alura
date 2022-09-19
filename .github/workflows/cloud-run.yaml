@@ -14,11 +14,14 @@
 
 name: Build and Deploy to Cloud Run
 
+# Define how to trigger this pipeline
 on:
   push:
     branches:
     - master
 
+# Create environment variables used in the pipeline
+# * Some of the values are imported from GitHub Secrets
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
   RUN_REGION: us-central1
@@ -43,6 +46,8 @@ jobs:
         project_id: ${{ secrets.RUN_PROJECT }}
 
     # Build and push image to Google Container Registry
+    # * `substitutions` parameter is used to pass local variables to `cloudbuild.yaml`
+    # * `$GITHUB_SHA` variable stores commit information
     - name: Build
       run: |-
         gcloud builds submit \
